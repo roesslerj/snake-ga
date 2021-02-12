@@ -163,7 +163,7 @@ def display_ui(game, score, record):
     game.gameDisplay.blit(text_score, (45, 440))
     game.gameDisplay.blit(text_score_number, (120, 440))
     game.gameDisplay.blit(text_highest, (190, 440))
-    game.gameDisplay.blit(text_highest_number, (350, 440))
+    game.gameDisplay.blit(text_highest_number, (370, 440))
     game.gameDisplay.blit(game.bg, (10, 10))
 
 
