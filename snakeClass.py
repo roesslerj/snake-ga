@@ -10,8 +10,6 @@ import random
 import statistics
 import torch.optim as optim
 import torch 
-from GPyOpt.methods import BayesianOptimization
-from bayesOpt import *
 import datetime
 import distutils.util
 DEVICE = 'cpu' # 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -318,14 +316,12 @@ if __name__ == '__main__':
     params = define_parameters()
     parser.add_argument("--display", nargs='?', type=distutils.util.strtobool, default=True)
     parser.add_argument("--speed", nargs='?', type=int, default=50)
-    parser.add_argument("--bayesianopt", nargs='?', type=distutils.util.strtobool, default=False)
+    parser.add_argument("--train", nargs='?', type=distutils.util.strtobool, default=True)
     args = parser.parse_args()
     print("Args", args)
     params['display'] = args.display
     params['speed'] = args.speed
-    if args.bayesianopt:
-        bayesOpt = BayesianOptimizer(params)
-        bayesOpt.optimize_RL()
+    params['train'] = args.train
     if params['train']:
         print("Training...")
         params['load_weights'] = False   # when training, the network is not pre-trained
