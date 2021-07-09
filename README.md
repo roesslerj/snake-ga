@@ -1,22 +1,14 @@
-# Deep Reinforcement Learning
-## Project: Train AI to play Snake
-*UPDATE:*
+# Deep Reinforcement Learning Project: Train AI to play Snake
 
-This project has been recently updated and improved:
-- It is now possible to optimize the Deep RL approach using Bayesian Optimization.
-- The code of Deep Reinforcement Learning was ported from Keras/TF to Pytorch. To see the old version of the code in Keras/TF, please refer to this repository: [snake-ga-tf](https://github.com/maurock/snake-ga-tf). 
+This is a fork of [this project from maurock](https://github.com/maurock/snake-ga), so we have a working starting-point.
 
 ## Introduction
-The goal of this project is to develop an AI Bot able to learn how to play the popular game Snake from scratch. In order to do it, I implemented a Deep Reinforcement Learning algorithm. This approach consists in giving the system parameters related to its state, and a positive or negative reward based on its actions. No rules about the game are given, and initially the Bot has no information on what it needs to do. The goal for the system is to figure it out and elaborate a strategy to maximize the score - or the reward. \
-We are going to see how a Deep Q-Learning algorithm learns how to play Snake, scoring up to 50 points and showing a solid strategy after only 5 minutes of training. \
-Additionally, it is possible to run the Bayesian Optimization method to find the optimal parameters of the Deep neural network, as well as some parameters of the Deep RL approach.
 
-## Install
-This project requires Python 3.6 with the pygame library installed, as well as Pytorch. If you encounter any error with `torch=1.7.1`, you might need to install Visual C++ 2015-2019 (or simply downgrade your pytorch version, it should be fine). \
-The full list of requirements is in `requirements.txt`. 
-```bash
-git clone git@github.com:maurock/snake-ga.git
-```
+The original project had several drawbacks, that we wanted to improve on:
+
+- It stores and manages the board in the actual pixel size, instead of having a logical board that gets transformed only for rendering.
+- It gives only a feature vector of 8 features to the DNN, which already encodes a lot of information about the rules and goals of the game.
+- The way the reinforcement is implemented already implicitly encodes some of the rules and goals of the game.
 
 ## Run
 To run and show the game, executes in the snake-ga folder:
@@ -55,3 +47,7 @@ def update_screen():
     pygame.display.update() <br>
     pygame.event.get() # <--- Add this line ###
 ```
+## License
+
+Unfortunately, the upstream project didn't specify a license, so we can't either.
+
